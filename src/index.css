@@ -136,6 +136,9 @@ input, button, textarea, select {
   align-items: center;
   gap: 2px;
   padding: 8px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
   text-decoration: none;
   color: var(--text-tertiary);
   font-size: 11px;

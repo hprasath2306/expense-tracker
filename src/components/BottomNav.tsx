@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Wallet, PieChart, Tag, Plus } from '../utils/icons';
 
 const navItems = [
@@ -8,18 +8,28 @@ const navItems = [
 ];
 
 export default function BottomNav({ onAddClick }: { onAddClick: () => void }) {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  function handleNav(to: string) {
+    if (location.pathname === to) return;
+    // Home pushes normally so it stays as the base entry;
+    // other tabs replace so back always returns to Home then exits.
+    navigate(to, { replace: to !== '/' });
+  }
+
   return (
     <nav className="bottom-nav">
       <div className="bottom-nav-inner">
         {navItems.map(({ to, icon: Icon, label }) => (
-          <NavLink
+          <button
             key={to}
-            to={to}
-            className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+            className={`nav-item ${location.pathname === to ? 'active' : ''}`}
+            onClick={() => handleNav(to)}
           >
             <Icon size={20} />
             <span>{label}</span>
-          </NavLink>
+          </button>
         ))}
       </div>
       <button className="fab" onClick={onAddClick} aria-label="Add expense">
