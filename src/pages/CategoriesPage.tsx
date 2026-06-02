@@ -141,11 +141,9 @@ export default function CategoriesPage() {
               <button className="icon-btn-sm" onClick={() => openEdit(cat)} aria-label="Edit">
                 <Edit2 size={14} />
               </button>
-              {!cat.isDefault && (
-                <button className="icon-btn-sm danger" onClick={() => handleDelete(cat.id)} aria-label="Delete">
-                  <Trash2 size={14} />
-                </button>
-              )}
+              <button className="icon-btn-sm danger" onClick={() => handleDelete(cat.id)} aria-label="Delete">
+                <Trash2 size={14} />
+              </button>
             </div>
           </div>
         ))}

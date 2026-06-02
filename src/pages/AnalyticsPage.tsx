@@ -179,7 +179,7 @@ export default function AnalyticsPage() {
             <Target size={18} />
           </div>
           <div>
-            <p className="insight-value">{CURRENCY_SYMBOL}{avgDaily.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 0 })}</p>
+            <p className="insight-value">{CURRENCY_SYMBOL}{avgDaily.toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</p>
             <p className="insight-label">Avg / Day</p>
           </div>
         </div>
