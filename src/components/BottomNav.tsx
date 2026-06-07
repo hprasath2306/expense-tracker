@@ -1,10 +1,11 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Wallet, PieChart, Tag, Plus } from '../utils/icons';
+import { Wallet, PieChart, Tag, Settings, Plus } from '../utils/icons';
 
 const navItems = [
   { to: '/', icon: Wallet, label: 'Home' },
   { to: '/analytics', icon: PieChart, label: 'Analytics' },
   { to: '/categories', icon: Tag, label: 'Categories' },
+  { to: '/settings', icon: Settings, label: 'Settings' },
 ];
 
 export default function BottomNav({ onAddClick }: { onAddClick: () => void }) {

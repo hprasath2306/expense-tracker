@@ -7,6 +7,7 @@ import ExpenseModal from './components/ExpenseModal';
 import HomePage from './pages/HomePage';
 import AnalyticsPage from './pages/AnalyticsPage';
 import CategoriesPage from './pages/CategoriesPage';
+import SettingsPage from './pages/SettingsPage';
 
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -36,6 +37,7 @@ export default function App() {
               <Route path="/" element={<HomePage onEdit={handleEdit} />} />
               <Route path="/analytics" element={<AnalyticsPage />} />
               <Route path="/categories" element={<CategoriesPage />} />
+              <Route path="/settings" element={<SettingsPage />} />
             </Routes>
           </main>
           <BottomNav onAddClick={handleAdd} />

@@ -5,6 +5,7 @@ import {
   ChevronLeft, ChevronRight, X, Check, Trash2, Edit2,
   PieChart, BarChart3, ArrowUpRight, ArrowDownRight,
   Search, Filter, Tag, CircleDollarSign, Flame, Target,
+  Settings, Download, Upload, AlertTriangle, FileText,
   type LucideProps,
 } from 'lucide-react';
 import React from 'react';
@@ -16,6 +17,7 @@ const iconMap: Record<string, React.FC<LucideProps>> = {
   ChevronLeft, ChevronRight, X, Check, Trash2, Edit2,
   PieChart, BarChart3, ArrowUpRight, ArrowDownRight,
   Search, Filter, Tag, CircleDollarSign, Flame, Target,
+  Settings, Download, Upload, AlertTriangle, FileText,
 };
 
 interface DynamicIconProps extends LucideProps {
@@ -35,4 +37,5 @@ export {
   ChevronLeft, ChevronRight, X, Check, Trash2, Edit2,
   PieChart, BarChart3, ArrowUpRight, ArrowDownRight,
   Search, Filter, Tag, CircleDollarSign, Flame, Target,
+  Settings, Download, Upload, AlertTriangle, FileText,
 };

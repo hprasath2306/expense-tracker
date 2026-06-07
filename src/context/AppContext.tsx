@@ -20,7 +20,8 @@ type Action =
   | { type: 'ADD_CATEGORY'; payload: Omit<Category, 'id' | 'isDefault'> }
   | { type: 'UPDATE_CATEGORY'; payload: Category }
   | { type: 'DELETE_CATEGORY'; payload: string }
-  | { type: 'SET_BUDGET'; payload: MonthlyBudget };
+  | { type: 'SET_BUDGET'; payload: MonthlyBudget }
+  | { type: 'RELOAD'; payload?: AppState };
 
 function reducer(state: AppState, action: Action): AppState {
   switch (action.type) {
@@ -57,6 +58,12 @@ function reducer(state: AppState, action: Action): AppState {
         : [...state.budgets, action.payload];
       return { ...state, budgets };
     }
+    case 'RELOAD':
+      return action.payload ?? {
+        expenses: loadExpenses(),
+        categories: loadCategories(),
+        budgets: loadBudgets(),
+      };
     default:
       return state;
   }
@@ -70,6 +77,7 @@ interface ContextValue extends AppState {
   updateCategory: (category: Category) => void;
   deleteCategory: (id: string) => void;
   setBudget: (budget: MonthlyBudget) => void;
+  reloadData: (data?: AppState) => void;
 }
 
 const AppContext = createContext<ContextValue | null>(null);
@@ -106,11 +114,14 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const setBudget = useCallback((budget: MonthlyBudget) => {
     dispatch({ type: 'SET_BUDGET', payload: budget });
   }, []);
+  const reloadData = useCallback((data?: AppState) => {
+    dispatch({ type: 'RELOAD', payload: data });
+  }, []);
 
   return (
     <AppContext.Provider value={{
       ...state, addExpense, updateExpense, deleteExpense,
-      addCategory, updateCategory, deleteCategory, setBudget,
+      addCategory, updateCategory, deleteCategory, setBudget, reloadData,
     }}>
       {children}
     </AppContext.Provider>
